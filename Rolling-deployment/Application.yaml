@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-app
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/Yogi-AK/ArgoCD_Examples.git 
+    path: Rolling-deployment
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
